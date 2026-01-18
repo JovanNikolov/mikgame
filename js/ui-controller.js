@@ -1,6 +1,6 @@
 // UI Controller - Handles all DOM manipulation and rendering
 
-const UIController = (function() {
+window.UIController = (function() {
     'use strict';
 
     // Cache DOM elements

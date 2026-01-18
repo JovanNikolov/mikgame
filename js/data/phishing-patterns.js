@@ -1,6 +1,6 @@
 // Phishing Patterns and Detection Rules
 
-const PhishingPatterns = {
+window.PhishingPatterns = {
     // Domain-based patterns
     DOMAIN_TYPOSQUATTING: {
         name: 'Domain Typosquatting',
@@ -139,13 +139,13 @@ const PhishingPatterns = {
 };
 
 // Helper function to get pattern by key
-const getPhishingPattern = (key) => {
-    return PhishingPatterns[key] || null;
+window.getPhishingPattern = (key) => {
+    return window.PhishingPatterns[key] || null;
 };
 
 // Get all patterns of a specific severity
-const getPatternsBySeverity = (severity) => {
-    return Object.entries(PhishingPatterns)
+window.getPatternsBySeverity = (severity) => {
+    return Object.entries(window.PhishingPatterns)
         .filter(([key, pattern]) => pattern.severity === severity)
         .map(([key, pattern]) => ({ key, ...pattern }));
 };

@@ -1,7 +1,7 @@
 // Game State Management
 // Centralized state object using IIFE pattern
 
-const GameState = (function() {
+window.GameState = (function() {
     'use strict';
 
     // Private state

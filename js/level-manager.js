@@ -1,6 +1,6 @@
 // Level Manager - Handles level progression and email queue
 
-const LevelManager = (function() {
+window.LevelManager = (function() {
     'use strict';
 
     let currentLevelConfig = null;

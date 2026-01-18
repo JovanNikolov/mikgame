@@ -1,6 +1,6 @@
 // Email Generator - Creates emails from templates
 
-const EmailGenerator = (function() {
+window.EmailGenerator = (function() {
     'use strict';
 
     let emailIdCounter = 0;

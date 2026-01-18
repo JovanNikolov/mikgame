@@ -1,6 +1,6 @@
 // Шаблони за Е-пошта - Легитимни и Фишинг
 
-const EmailTemplates = {
+window.EmailTemplates = {
     legitimate: [
         {
             id: 'legit_meeting',

@@ -1,6 +1,6 @@
 // Конфигурација на Нивоа - Прогресивна Тежина
 
-const LevelConfig = {
+window.LevelConfig = {
     1: {
         levelNumber: 1,
         name: 'Ден на Ориентација',
@@ -108,19 +108,19 @@ const LevelConfig = {
 };
 
 // Помошни функции
-const getLevelConfig = (levelNumber) => {
-    return LevelConfig[levelNumber] || null;
+window.getLevelConfig = (levelNumber) => {
+    return window.LevelConfig[levelNumber] || null;
 };
 
-const getTotalLevels = () => {
-    return Object.keys(LevelConfig).length;
+window.getTotalLevels = () => {
+    return Object.keys(window.LevelConfig).length;
 };
 
-const getNextLevel = (currentLevel) => {
+window.getNextLevel = (currentLevel) => {
     const nextLevel = currentLevel + 1;
-    return LevelConfig[nextLevel] || null;
+    return window.LevelConfig[nextLevel] || null;
 };
 
-const isLastLevel = (levelNumber) => {
-    return levelNumber >= getTotalLevels();
+window.isLastLevel = (levelNumber) => {
+    return levelNumber >= window.getTotalLevels();
 };

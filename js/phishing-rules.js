@@ -1,6 +1,6 @@
 // Phishing Detection Rules and Logic
 
-const PhishingRules = (function() {
+window.PhishingRules = (function() {
     'use strict';
 
     // Check if domain contains typosquatting

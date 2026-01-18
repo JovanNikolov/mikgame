@@ -101,6 +101,44 @@ The game uses a modular architecture with IIFE pattern:
 - **ui-controller.js**: All DOM manipulation
 - **main.js**: Game orchestration and event handling
 
+### Running Locally
+
+```bash
+npm install
+npm run dev
+```
+
+Open http://localhost:5174 in your browser.
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+This creates a `dist` folder with optimized files ready for deployment.
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Deploying to Vercel
+
+1. Push your code to GitHub
+2. Import the project in Vercel
+3. Vercel will automatically detect the Vite configuration
+4. Deploy!
+
+Or use Vercel CLI:
+```bash
+npm install -g vercel
+vercel
+```
+
+The `vercel.json` file is already configured with the correct build settings.
+
 ## Credits
 
 Inspired by Lucas Pope's "Papers, Please"

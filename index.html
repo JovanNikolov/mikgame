@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Inspector - Cybersecurity Game</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/email-viewer.css">
+    <link rel="stylesheet" href="css/inspector-tools.css">
+    <link rel="stylesheet" href="css/ui-components.css">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen">
+        <div class="start-content">
+            <h1>Phishing Inspector</h1>
+            <p class="subtitle">Protect the organization from phishing attacks</p>
+            <p class="instructions">
+                Review each email carefully and decide whether to APPROVE or REJECT it.<br>
+                Use the inspection tools to check headers, links, and attachments.<br>
+                Three strikes and you're out!
+            </p>
+            <button id="btn-start-game" class="btn-primary">Start Game</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+        <!-- Header with game stats -->
+        <header class="game-header">
+            <div class="stat-group">
+                <span class="stat-label">Level:</span>
+                <span id="stat-level" class="stat-value">1</span>
+            </div>
+            <div class="stat-group">
+                <span class="stat-label">Score:</span>
+                <span id="stat-score" class="stat-value">0</span>
+            </div>
+            <div class="stat-group">
+                <span class="stat-label">Strikes:</span>
+                <span id="stat-strikes" class="stat-value">
+                    <span class="strike-indicator">○○○</span>
+                </span>
+            </div>
+            <div class="stat-group">
+                <span class="stat-label">Progress:</span>
+                <span id="stat-progress" class="stat-value">0/10</span>
+            </div>
+        </header>
+
+        <!-- Main game area -->
+        <main class="game-container">
+            <!-- Left panel: Email Viewer -->
+            <section class="email-panel">
+                <div class="email-viewer">
+                    <div class="email-header-section">
+                        <div class="email-field">
+                            <span class="field-label">From:</span>
+                            <span id="email-from-name" class="field-value"></span>
+                            <span id="email-from-address" class="field-value-secondary"></span>
+                        </div>
+                        <div class="email-field">
+                            <span class="field-label">To:</span>
+                            <span id="email-to-name" class="field-value"></span>
+                            <span id="email-to-address" class="field-value-secondary"></span>
+                        </div>
+                        <div class="email-field">
+                            <span class="field-label">Subject:</span>
+                            <span id="email-subject" class="field-value"></span>
+                        </div>
+                        <div class="email-field">
+                            <span class="field-label">Date:</span>
+                            <span id="email-date" class="field-value-secondary"></span>
+                        </div>
+                    </div>
+
+                    <div class="email-body-section">
+                        <div id="email-body" class="email-body"></div>
+                    </div>
+
+                    <div id="email-links-section" class="email-links-section hidden">
+                        <div class="section-title">Links:</div>
+                        <div id="email-links-container"></div>
+                    </div>
+
+                    <div id="email-attachments-section" class="email-attachments-section hidden">
+                        <div class="section-title">Attachments:</div>
+                        <div id="email-attachments-container"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right panel: Inspection Tools -->
+            <section class="inspector-panel">
+                <div class="inspector-tools">
+                    <div class="tool-section">
+                        <h3 class="tool-title">Header Analysis</h3>
+                        <div class="tool-content">
+                            <div class="header-item">
+                                <span class="header-label">SPF Result:</span>
+                                <span id="header-spf" class="header-value"></span>
+                            </div>
+                            <div class="header-item">
+                                <span class="header-label">DKIM Result:</span>
+                                <span id="header-dkim" class="header-value"></span>
+                            </div>
+                            <div class="header-item">
+                                <span class="header-label">Return-Path:</span>
+                                <span id="header-return-path" class="header-value"></span>
+                            </div>
+                            <div class="header-item">
+                                <span class="header-label">Received From:</span>
+                                <span id="header-received" class="header-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-section">
+                        <h3 class="tool-title">Link Inspector</h3>
+                        <div id="link-inspector-content" class="tool-content">
+                            <p class="hint-text">Hover over links in the email to inspect them</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-section">
+                        <h3 class="tool-title">Security Checklist</h3>
+                        <div class="tool-content">
+                            <ul class="security-checklist">
+                                <li>Verify sender's email address</li>
+                                <li>Check for generic greetings</li>
+                                <li>Look for urgent/threatening language</li>
+                                <li>Inspect link destinations</li>
+                                <li>Check email authentication (SPF/DKIM)</li>
+                                <li>Examine attachment file types</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Decision buttons -->
+        <footer class="decision-panel">
+            <button id="btn-approve" class="btn-decision btn-approve" disabled>
+                <span class="btn-icon">✓</span>
+                <span class="btn-text">APPROVE</span>
+                <span class="btn-hint">(A)</span>
+            </button>
+            <button id="btn-reject" class="btn-decision btn-reject" disabled>
+                <span class="btn-icon">✗</span>
+                <span class="btn-text">REJECT</span>
+                <span class="btn-hint">(R)</span>
+            </button>
+        </footer>
+    </div>
+
+    <!-- Feedback Overlay -->
+    <div id="feedback-overlay" class="overlay hidden">
+        <div class="feedback-modal">
+            <div id="feedback-result" class="feedback-result"></div>
+            <div id="feedback-explanation" class="feedback-explanation"></div>
+            <div id="feedback-indicators" class="feedback-indicators"></div>
+            <button id="btn-continue" class="btn-primary">Continue</button>
+        </div>
+    </div>
+
+    <!-- Level Complete Screen -->
+    <div id="level-complete-screen" class="screen hidden">
+        <div class="level-complete-content">
+            <h2>Level Complete!</h2>
+            <div class="level-stats">
+                <div class="stat-row">
+                    <span>Accuracy:</span>
+                    <span id="level-accuracy"></span>
+                </div>
+                <div class="stat-row">
+                    <span>Correct Decisions:</span>
+                    <span id="level-correct"></span>
+                </div>
+                <div class="stat-row">
+                    <span>Score Earned:</span>
+                    <span id="level-score-earned"></span>
+                </div>
+            </div>
+            <button id="btn-next-level" class="btn-primary">Next Level</button>
+        </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over-screen" class="screen hidden">
+        <div class="game-over-content">
+            <h2>Game Over</h2>
+            <p id="game-over-message"></p>
+            <div class="final-stats">
+                <div class="stat-row">
+                    <span>Final Score:</span>
+                    <span id="final-score"></span>
+                </div>
+                <div class="stat-row">
+                    <span>Level Reached:</span>
+                    <span id="final-level"></span>
+                </div>
+            </div>
+            <button id="btn-retry" class="btn-primary">Try Again</button>
+        </div>
+    </div>
+
+    <!-- Victory Screen -->
+    <div id="victory-screen" class="screen hidden">
+        <div class="victory-content">
+            <h2>Victory!</h2>
+            <p>Congratulations! You've completed all levels and protected the organization from phishing attacks!</p>
+            <div class="final-stats">
+                <div class="stat-row">
+                    <span>Final Score:</span>
+                    <span id="victory-score"></span>
+                </div>
+                <div class="stat-row">
+                    <span>Total Accuracy:</span>
+                    <span id="victory-accuracy"></span>
+                </div>
+            </div>
+            <button id="btn-play-again" class="btn-primary">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/game-state.js"></script>
+    <script src="js/data/email-templates.js"></script>
+    <script src="js/data/phishing-patterns.js"></script>
+    <script src="js/data/level-config.js"></script>
+    <script src="js/phishing-rules.js"></script>
+    <script src="js/email-generator.js"></script>
+    <script src="js/level-manager.js"></script>
+    <script src="js/ui-controller.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

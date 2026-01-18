@@ -1,113 +1,113 @@
-// Level Configuration - Progressive Difficulty
+// Конфигурација на Нивоа - Прогресивна Тежина
 
 const LevelConfig = {
     1: {
         levelNumber: 1,
-        name: 'Orientation Day',
+        name: 'Ден на Ориентација',
         emailCount: 8,
-        phishingRatio: 0.5, // 50% phishing, 50% legitimate
+        phishingRatio: 0.5, // 50% фишинг, 50% легитимни
         maxStrikes: 3,
         techniques: ['domain_typosquatting', 'urgency_language', 'generic_greeting', 'url_mismatch'],
-        difficulty: 1, // Easy - obvious indicators
-        timeLimit: null, // No time pressure
-        passingScore: 6, // Need 6/8 correct (75%)
+        difficulty: 1, // Лесно - очигледни индикатори
+        timeLimit: null, // Без временски притисок
+        passingScore: 6, // Потребни 6/8 точни (75%)
         scorePerCorrect: 50,
-        description: 'Welcome! Start with some basic phishing detection. Look for obvious red flags.',
-        hint: 'Check sender email addresses carefully and hover over links to see where they go.'
+        description: 'Добредојдовте! Почнете со основна детекција на фишинг. Барајте очигледни знаци за опасност.',
+        hint: 'Проверете ги внимателно е-адресите на испраќачите и поставете го покажувачот врз линковите за да видите каде водат.'
     },
 
     2: {
         levelNumber: 2,
-        name: 'Getting Started',
+        name: 'Почетник',
         emailCount: 10,
-        phishingRatio: 0.6, // 60% phishing
+        phishingRatio: 0.6, // 60% фишинг
         maxStrikes: 3,
         techniques: ['domain_typosquatting', 'urgency_language', 'url_mismatch', 'suspicious_attachment'],
         difficulty: 1,
         timeLimit: null,
-        passingScore: 8, // Need 8/10 correct (80%)
+        passingScore: 8, // Потребни 8/10 точни (80%)
         scorePerCorrect: 75,
-        description: 'More emails to review. Watch out for suspicious attachments!',
-        hint: 'Double-check file extensions on attachments. Beware of .exe and double extensions.'
+        description: 'Повеќе е-пораки за преглед. Внимавајте на сомнителни прилози!',
+        hint: 'Двојно проверете ги екстензиите на фајловите на прилозите. Чувајте се од .exe и двојни екстензии.'
     },
 
     3: {
         levelNumber: 3,
-        name: 'Security Analyst',
+        name: 'Безбедносен Аналитичар',
         emailCount: 12,
         phishingRatio: 0.65,
         maxStrikes: 3,
         techniques: ['domain_typosquatting', 'url_mismatch', 'spf_failure', 'suspicious_attachment', 'requests_credentials'],
-        difficulty: 2, // Medium - mixed difficulty
+        difficulty: 2, // Средно - мешовита тежина
         timeLimit: null,
-        passingScore: 10, // Need 10/12 correct (83%)
+        passingScore: 10, // Потребни 10/12 точни (83%)
         scorePerCorrect: 100,
-        description: 'Time to use the header analysis tools. SPF and DKIM failures are red flags!',
-        hint: 'Check the Header Analysis panel for authentication failures.'
+        description: 'Време е да ги користите алатките за анализа на заглавија. SPF и DKIM неуспесите се знаци за опасност!',
+        hint: 'Проверете го панелот за Анализа на Заглавија за неуспеси во автентикација.'
     },
 
     4: {
         levelNumber: 4,
-        name: 'Under Pressure',
+        name: 'Под Притисок',
         emailCount: 12,
         phishingRatio: 0.7,
         maxStrikes: 3,
         techniques: ['domain_typosquatting', 'url_mismatch', 'spf_failure', 'executive_impersonation'],
         difficulty: 2,
-        timeLimit: 360, // 6 minutes
+        timeLimit: 360, // 6 минути
         passingScore: 10,
         scorePerCorrect: 125,
-        description: 'You now have a time limit! Work quickly but carefully.',
-        hint: 'Beware of emails claiming to be from executives asking for urgent actions.'
+        description: 'Сега имате временско ограничување! Работете брзо но внимателно.',
+        hint: 'Чувајте се од е-пораки што тврдат дека се од раководители и бараат итни акции.'
     },
 
     5: {
         levelNumber: 5,
-        name: 'Advanced Threats',
+        name: 'Напредни Закани',
         emailCount: 15,
         phishingRatio: 0.7,
         maxStrikes: 3,
         techniques: ['domain_typosquatting', 'url_mismatch', 'spf_failure', 'dkim_failure', 'executive_impersonation', 'requests_credentials'],
-        difficulty: 3, // Hard - subtle indicators
-        timeLimit: 420, // 7 minutes
-        passingScore: 13, // Need 13/15 correct (87%)
+        difficulty: 3, // Тешко - суптилни индикатори
+        timeLimit: 420, // 7 минути
+        passingScore: 13, // Потребни 13/15 точни (87%)
         scorePerCorrect: 150,
-        description: 'These phishing attempts are more sophisticated. Pay attention to details!',
-        hint: 'Look for subtle domain differences like rn instead of m, or wrong TLDs like .corn.'
+        description: 'Овие фишинг обиди се пософистицирани. Обрнете внимание на деталите!',
+        hint: 'Барајте суптилни разлики во домените како rn наместо m, или погрешни TLD-ови како .corn.'
     },
 
     6: {
         levelNumber: 6,
-        name: 'Expert Mode',
+        name: 'Експертски Режим',
         emailCount: 15,
         phishingRatio: 0.75,
-        maxStrikes: 2, // Only 2 strikes allowed!
+        maxStrikes: 2, // Дозволени се само 2 грешки!
         techniques: ['domain_typosquatting', 'url_mismatch', 'spf_failure', 'dkim_failure', 'executive_impersonation', 'requests_wire_transfer'],
         difficulty: 3,
-        timeLimit: 360, // 6 minutes - less time!
-        passingScore: 14, // Need 14/15 correct (93%)
+        timeLimit: 360, // 6 минути - помалку време!
+        passingScore: 14, // Потребни 14/15 точни (93%)
         scorePerCorrect: 200,
-        description: 'Expert level! Only 2 strikes allowed. Attackers are using advanced techniques.',
-        hint: 'Even emails with passing SPF can be phishing. Check everything carefully.'
+        description: 'Експертско ниво! Дозволени се само 2 грешки. Нападачите користат напредни техники.',
+        hint: 'Дури и е-пораки со поминат SPF можат да бидат фишинг. Проверете го сето внимателно.'
     },
 
     7: {
         levelNumber: 7,
-        name: 'Master Inspector',
+        name: 'Мајстор Инспектор',
         emailCount: 18,
         phishingRatio: 0.8,
         maxStrikes: 2,
         techniques: ['all'],
         difficulty: 3,
-        timeLimit: 480, // 8 minutes
-        passingScore: 16, // Need 16/18 correct (89%)
+        timeLimit: 480, // 8 минути
+        passingScore: 16, // Потребни 16/18 точни (89%)
         scorePerCorrect: 250,
-        description: 'Final challenge! All phishing techniques are in play.',
-        hint: 'Trust your training. Look for multiple indicators before making a decision.'
+        description: 'Финален предизвик! Сите фишинг техники се во игра.',
+        hint: 'Верувајте на вашата обука. Барајте повеќе индикатори пред да донесете одлука.'
     }
 };
 
-// Helper functions
+// Помошни функции
 const getLevelConfig = (levelNumber) => {
     return LevelConfig[levelNumber] || null;
 };

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phishing Inspector - Cybersecurity Game</title>
+    <title>Инспектор за Фишинг - Кибер-безбедносна Игра</title>
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/email-viewer.css">
@@ -14,14 +14,14 @@
     <!-- Start Screen -->
     <div id="start-screen" class="screen">
         <div class="start-content">
-            <h1>Phishing Inspector</h1>
-            <p class="subtitle">Protect the organization from phishing attacks</p>
+            <h1>Инспектор за Фишинг</h1>
+            <p class="subtitle">Заштитете ја организацијата од фишинг напади</p>
             <p class="instructions">
-                Review each email carefully and decide whether to APPROVE or REJECT it.<br>
-                Use the inspection tools to check headers, links, and attachments.<br>
-                Three strikes and you're out!
+                Внимателно прегледајте ги е-пораките и одлучете дали да ги ОДОБРИТЕ или ОТФРЛИТЕ.<br>
+                Користете ги алатките за инспекција за да ги проверите заглавијата, линковите и прилозите.<br>
+                Три грешки и ве бркаме од работа!
             </p>
-            <button id="btn-start-game" class="btn-primary">Start Game</button>
+            <button id="btn-start-game" class="btn-primary">Започни ја играта</button>
         </div>
     </div>
 
@@ -30,21 +30,24 @@
         <!-- Header with game stats -->
         <header class="game-header">
             <div class="stat-group">
-                <span class="stat-label">Level:</span>
+                <span class="stat-label">Ниво:</span>
                 <span id="stat-level" class="stat-value">1</span>
+                <span> </span>
             </div>
             <div class="stat-group">
-                <span class="stat-label">Score:</span>
+                <span class="stat-label">Поени:</span>
                 <span id="stat-score" class="stat-value">0</span>
+                <span> </span>
             </div>
             <div class="stat-group">
-                <span class="stat-label">Strikes:</span>
+                <span class="stat-label">Грешки:</span>
                 <span id="stat-strikes" class="stat-value">
                     <span class="strike-indicator">○○○</span>
                 </span>
+                <span> </span>
             </div>
             <div class="stat-group">
-                <span class="stat-label">Progress:</span>
+                <span class="stat-label">Напредок:</span>
                 <span id="stat-progress" class="stat-value">0/10</span>
             </div>
         </header>
@@ -56,21 +59,21 @@
                 <div class="email-viewer">
                     <div class="email-header-section">
                         <div class="email-field">
-                            <span class="field-label">From:</span>
+                            <span class="field-label">Од:</span>
                             <span id="email-from-name" class="field-value"></span>
                             <span id="email-from-address" class="field-value-secondary"></span>
                         </div>
                         <div class="email-field">
-                            <span class="field-label">To:</span>
+                            <span class="field-label">До:</span>
                             <span id="email-to-name" class="field-value"></span>
                             <span id="email-to-address" class="field-value-secondary"></span>
                         </div>
                         <div class="email-field">
-                            <span class="field-label">Subject:</span>
+                            <span class="field-label">Наслов:</span>
                             <span id="email-subject" class="field-value"></span>
                         </div>
                         <div class="email-field">
-                            <span class="field-label">Date:</span>
+                            <span class="field-label">Датум:</span>
                             <span id="email-date" class="field-value-secondary"></span>
                         </div>
                     </div>
@@ -80,12 +83,12 @@
                     </div>
 
                     <div id="email-links-section" class="email-links-section hidden">
-                        <div class="section-title">Links:</div>
+                        <div class="section-title">Линкови:</div>
                         <div id="email-links-container"></div>
                     </div>
 
                     <div id="email-attachments-section" class="email-attachments-section hidden">
-                        <div class="section-title">Attachments:</div>
+                        <div class="section-title">Прилози:</div>
                         <div id="email-attachments-container"></div>
                     </div>
                 </div>
@@ -95,44 +98,44 @@
             <section class="inspector-panel">
                 <div class="inspector-tools">
                     <div class="tool-section">
-                        <h3 class="tool-title">Header Analysis</h3>
+                        <h3 class="tool-title">Анализа на Заглавија</h3>
                         <div class="tool-content">
                             <div class="header-item">
-                                <span class="header-label">SPF Result:</span>
+                                <span class="header-label">SPF Резултат:</span>
                                 <span id="header-spf" class="header-value"></span>
                             </div>
                             <div class="header-item">
-                                <span class="header-label">DKIM Result:</span>
+                                <span class="header-label">DKIM Резултат:</span>
                                 <span id="header-dkim" class="header-value"></span>
                             </div>
                             <div class="header-item">
-                                <span class="header-label">Return-Path:</span>
+                                <span class="header-label">Патека за Враќање:</span>
                                 <span id="header-return-path" class="header-value"></span>
                             </div>
                             <div class="header-item">
-                                <span class="header-label">Received From:</span>
+                                <span class="header-label">Примено Од:</span>
                                 <span id="header-received" class="header-value"></span>
                             </div>
                         </div>
                     </div>
 
                     <div class="tool-section">
-                        <h3 class="tool-title">Link Inspector</h3>
+                        <h3 class="tool-title">Инспектор за Линкови</h3>
                         <div id="link-inspector-content" class="tool-content">
-                            <p class="hint-text">Hover over links in the email to inspect them</p>
+                            <p class="hint-text">Поставете го покажувачот врз линковите за да ги инспектирате</p>
                         </div>
                     </div>
 
                     <div class="tool-section">
-                        <h3 class="tool-title">Security Checklist</h3>
+                        <h3 class="tool-title">Безбедносна Листа</h3>
                         <div class="tool-content">
                             <ul class="security-checklist">
-                                <li>Verify sender's email address</li>
-                                <li>Check for generic greetings</li>
-                                <li>Look for urgent/threatening language</li>
-                                <li>Inspect link destinations</li>
-                                <li>Check email authentication (SPF/DKIM)</li>
-                                <li>Examine attachment file types</li>
+                                <li>Проверете ја е-адресата на испраќачот</li>
+                                <li>Проверете за генерички поздрави</li>
+                                <li>Барајте итни/заканувачки пораки</li>
+                                <li>Инспектирајте ги дестинациите на линковите</li>
+                                <li>Проверете ја автентикацијата (SPF/DKIM)</li>
+                                <li>Испитајте ги типовите на прилозите</li>
                             </ul>
                         </div>
                     </div>
@@ -144,12 +147,12 @@
         <footer class="decision-panel">
             <button id="btn-approve" class="btn-decision btn-approve" disabled>
                 <span class="btn-icon">✓</span>
-                <span class="btn-text">APPROVE</span>
+                <span class="btn-text">ОДОБРИ</span>
                 <span class="btn-hint">(A)</span>
             </button>
             <button id="btn-reject" class="btn-decision btn-reject" disabled>
                 <span class="btn-icon">✗</span>
-                <span class="btn-text">REJECT</span>
+                <span class="btn-text">ОТФРЛИ</span>
                 <span class="btn-hint">(R)</span>
             </button>
         </footer>
@@ -161,67 +164,67 @@
             <div id="feedback-result" class="feedback-result"></div>
             <div id="feedback-explanation" class="feedback-explanation"></div>
             <div id="feedback-indicators" class="feedback-indicators"></div>
-            <button id="btn-continue" class="btn-primary">Continue</button>
+            <button id="btn-continue" class="btn-primary">Продолжи</button>
         </div>
     </div>
 
     <!-- Level Complete Screen -->
     <div id="level-complete-screen" class="screen hidden">
         <div class="level-complete-content">
-            <h2>Level Complete!</h2>
+            <h2>Нивото е Завршено!</h2>
             <div class="level-stats">
                 <div class="stat-row">
-                    <span>Accuracy:</span>
+                    <span>Точност:</span>
                     <span id="level-accuracy"></span>
                 </div>
                 <div class="stat-row">
-                    <span>Correct Decisions:</span>
+                    <span>Точни Одлуки:</span>
                     <span id="level-correct"></span>
                 </div>
                 <div class="stat-row">
-                    <span>Score Earned:</span>
+                    <span>Заработени Поени:</span>
                     <span id="level-score-earned"></span>
                 </div>
             </div>
-            <button id="btn-next-level" class="btn-primary">Next Level</button>
+            <button id="btn-next-level" class="btn-primary">Следно Ниво</button>
         </div>
     </div>
 
     <!-- Game Over Screen -->
     <div id="game-over-screen" class="screen hidden">
         <div class="game-over-content">
-            <h2>Game Over</h2>
+            <h2>Играта Заврши</h2>
             <p id="game-over-message"></p>
             <div class="final-stats">
                 <div class="stat-row">
-                    <span>Final Score:</span>
+                    <span>Финален Резултат:</span>
                     <span id="final-score"></span>
                 </div>
                 <div class="stat-row">
-                    <span>Level Reached:</span>
+                    <span>Достигнато Ниво:</span>
                     <span id="final-level"></span>
                 </div>
             </div>
-            <button id="btn-retry" class="btn-primary">Try Again</button>
+            <button id="btn-retry" class="btn-primary">Обиди се Повторно</button>
         </div>
     </div>
 
     <!-- Victory Screen -->
     <div id="victory-screen" class="screen hidden">
         <div class="victory-content">
-            <h2>Victory!</h2>
-            <p>Congratulations! You've completed all levels and protected the organization from phishing attacks!</p>
+            <h2>Победа!</h2>
+            <p>Честитки! Ги завршивте сите нивоа и ја заштитивте организацијата од фишинг напади!</p>
             <div class="final-stats">
                 <div class="stat-row">
-                    <span>Final Score:</span>
+                    <span>Финален Резултат:</span>
                     <span id="victory-score"></span>
                 </div>
                 <div class="stat-row">
-                    <span>Total Accuracy:</span>
+                    <span>Вкупна Точност:</span>
                     <span id="victory-accuracy"></span>
                 </div>
             </div>
-            <button id="btn-play-again" class="btn-primary">Play Again</button>
+            <button id="btn-play-again" class="btn-primary">Играј Повторно</button>
         </div>
     </div>
 

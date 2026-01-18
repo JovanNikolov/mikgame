@@ -181,7 +181,7 @@ const UIController = (function() {
                 <div class="attachment-info">
                     <span class="attachment-name">${attachment.name}</span>
                     <span class="attachment-size">${attachment.size}</span>
-                    ${(isDangerous || hasDoubleExtension) ? '<div class="attachment-warning">⚠ Potentially dangerous file type</div>' : ''}
+                    ${(isDangerous || hasDoubleExtension) ? '<div class="attachment-warning">⚠ Потенцијално опасен тип на фајл</div>' : ''}
                 </div>
             `;
 
@@ -217,12 +217,12 @@ const UIController = (function() {
         const isMatch = link.displayText === link.actualUrl;
         elements.linkInspectorContent.innerHTML = `
             <div class="link-inspection-result">
-                <div class="link-inspection-label">Display Text:</div>
+                <div class="link-inspection-label">Прикажан Текст:</div>
                 <div class="link-inspection-value">${link.displayText}</div>
-                <div class="link-inspection-label">Actual URL:</div>
+                <div class="link-inspection-label">Вистински URL:</div>
                 <div class="link-inspection-value">${link.actualUrl}</div>
                 <div class="link-match-status ${isMatch ? 'match' : 'mismatch'}">
-                    ${isMatch ? '✓ URLs Match' : '⚠ URL MISMATCH!'}
+                    ${isMatch ? '✓ URL-ите се Совпаѓаат' : '⚠ НЕСОВПАЃАЊЕ НА URL!'}
                 </div>
             </div>
         `;
@@ -231,7 +231,7 @@ const UIController = (function() {
     // Show feedback
     function showFeedback(result, explanation, indicators) {
         // Set result
-        elements.feedbackResult.textContent = result.correct ? 'Correct!' : 'Incorrect';
+        elements.feedbackResult.textContent = result.correct ? 'Точно!' : 'Неточно';
         elements.feedbackResult.className = 'feedback-result ' + (result.correct ? 'correct' : 'incorrect');
 
         // Set explanation
@@ -239,7 +239,7 @@ const UIController = (function() {
 
         // Set indicators
         if (indicators && indicators.length > 0) {
-            let indicatorsHTML = '<h4>Phishing Indicators Found:</h4><ul class="indicator-list">';
+            let indicatorsHTML = '<h4>Пронајдени Фишинг Индикатори:</h4><ul class="indicator-list">';
             indicators.forEach(indicator => {
                 indicatorsHTML += `
                     <li class="indicator-item severity-${indicator.severity}">

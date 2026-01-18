@@ -1,37 +1,37 @@
-// Email Templates - Legitimate and Phishing
+// Шаблони за Е-пошта - Легитимни и Фишинг
 
 const EmailTemplates = {
     legitimate: [
         {
             id: 'legit_meeting',
             category: 'work_update',
-            from: { name: 'Sarah Johnson', domain: 'company.com' },
+            from: { name: 'Сара Јохансонович', domain: 'company.com' },
             subjects: [
-                'Team Meeting Tomorrow at 2pm',
-                'Quick sync - Project Update',
-                'Weekly Team Standup'
+                'Тимски Состанок Утре во 14ч',
+                'Краток состанок - Ажурирање на Проектот',
+                'Неделен Тимски Состанок'
             ],
             bodyTemplates: [
-                `Hi {{name}},
+                `Здраво {{name}},
 
-Just a reminder that we have our team meeting tomorrow at 2pm in Conference Room B.
+Само потсетник дека имаме тимски состанок утре во 14ч во Конференциска Сала Б.
 
-Agenda:
-- Q1 progress review
-- New project assignments
-- Team feedback session
+Агенда:
+- Преглед на напредокот Q1
+- Нови проектни задачи
+- Сесија за повратни информации
 
-See you there!
+Се гледаме таму!
 
-Sarah`,
-                `Hello {{name}},
+Сара`,
+                `Здраво {{name}},
 
-Can we schedule a quick 15-minute sync to discuss the current project status? I have a few questions about the timeline.
+Можеме ли да закажеме краток 15-минутен состанок за да го дискутираме статусот на тековниот проект? Имам неколку прашања за временската рамка.
 
-Let me know what works for you.
+Кажи ми што ти одговара.
 
-Thanks,
-Sarah`
+Благодарам,
+Сара`
             ],
             hasLinks: false,
             hasAttachments: false
@@ -39,72 +39,72 @@ Sarah`
         {
             id: 'legit_hr',
             category: 'hr_notice',
-            from: { name: 'HR Department', domain: 'company.com' },
+            from: { name: 'HR Одделение', domain: 'company.com' },
             subjects: [
-                'Benefits Enrollment Period',
-                'Updated Company Policies',
-                'Holiday Schedule 2026'
+                'Период на Запишување за Бенефиции',
+                'Ажурирани Политики на Компанијата',
+                'Распоред на Празници 2026'
             ],
             bodyTemplates: [
-                `Dear Team Members,
+                `Почитувани Членови на Тимот,
 
-This is a reminder that the benefits enrollment period begins next Monday, January 20th and ends on February 15th.
+Ова е потсетник дека периодот за запишување за бенефиции започнува следниот понеделник, 20 јануари и завршува на 15 февруари.
 
-You can review and update your benefits selections through the HR portal at https://hr.company.com
+Можете да ги прегледате и ажурирате вашите избори за бенефиции преку HR порталот на https://hr.company.com
 
-If you have any questions, please contact the HR team.
+Ако имате прашања, ве молиме контактирајте го HR тимот.
 
-Best regards,
-HR Department`,
-                `Dear Employees,
+Со почит,
+HR Одделение`,
+                `Почитувани Вработени,
 
-Please find attached the updated company policies for 2026. The changes go into effect on February 1st.
+Ве молиме најдете ги прикачени ажурираните политики на компанијата за 2026. Промените влегуваат во сила од 1 февруари.
 
-Key updates include:
-- Remote work policy
-- Travel reimbursement procedures
-- PTO accrual changes
+Клучни ажурирања:
+- Политика за далечинска работа
+- Процедури за надомест на патувања
+- Промени во акумулација на ПТО
 
-Please review the attached document carefully.
+Ве молиме внимателно прочитајте го прикачениот документ.
 
-HR Department`
+HR Одделение`
             ],
             hasLinks: true,
             legitimateLinks: ['https://hr.company.com', 'https://company.com/policies'],
             hasAttachments: true,
             attachments: [
-                { name: 'Company_Policies_2026.pdf', size: '245 KB', type: 'application/pdf' }
+                { name: 'Politiki_Kompanija_2026.pdf', size: '245 KB', type: 'application/pdf' }
             ]
         },
         {
             id: 'legit_it',
             category: 'it_notice',
-            from: { name: 'IT Support', domain: 'company.com' },
+            from: { name: 'IT Поддршка', domain: 'company.com' },
             subjects: [
-                'Scheduled Maintenance - Sunday Night',
-                'Security Update Reminder',
-                'New Software Deployment'
+                'Закажано Одржување - Недела Навечер',
+                'Потсетник за Безбедносно Ажурирање',
+                'Нова Софтверска Имплементација'
             ],
             bodyTemplates: [
-                `Hello,
+                `Здраво,
 
-This is a reminder that we will be performing scheduled system maintenance this Sunday night from 10pm to 2am.
+Ова е потсетник дека ќе вршиме закажано системско одржување оваа недела навечер од 22ч до 02ч.
 
-During this time, email and internal systems may be temporarily unavailable.
+Во текот на ова време, е-поштата и внатрешните системи може привремено да бидат недостапни.
 
-Please save your work before 10pm and plan accordingly.
+Ве молиме зачувајте ја вашата работа пред 22ч и планирајте соодветно.
 
-Thank you for your patience.
+Ви благодариме за трпението.
 
-IT Support Team`,
-                `Hi Everyone,
+IT Тим за Поддршка`,
+                `Здраво Сите,
 
-Please remember to install the latest security updates on your workstations by end of week.
+Ве молиме не заборавајте да ги инсталирате најновите безбедносни ажурирања на вашите работни станици до крајот на неделата.
 
-You can check for updates in your system settings or contact IT Support if you need assistance.
+Можете да проверите за ажурирања во поставките на вашиот систем или да контактирате IT Поддршка ако ви треба помош.
 
-Thanks,
-IT Support`
+Благодарам,
+IT Поддршка`
             ],
             hasLinks: false,
             hasAttachments: false
@@ -112,28 +112,28 @@ IT Support`
         {
             id: 'legit_newsletter',
             category: 'newsletter',
-            from: { name: 'Company Newsletter', domain: 'company.com' },
+            from: { name: 'Билтен на Компанијата', domain: 'company.com' },
             subjects: [
-                'Weekly Company Update',
-                'This Week in Tech - Company News',
-                'Employee Spotlight & Updates'
+                'Неделно Ажурирање на Компанијата',
+                'Неделава во Технологија - Вести од Компанијата',
+                'Фокус на Вработен & Ажурирања'
             ],
             bodyTemplates: [
-                `Hello Team,
+                `Здраво Тиме,
 
-Here are this week's highlights:
+Еве ги најважните настани од оваа недела:
 
-📢 Announcements:
-- New cafeteria menu starting Monday
-- Employee appreciation event on Friday
+📢 Објави:
+- Ново мени во кафетеријата започнува во понеделник
+- Настан за ценење на вработени во петок
 
-🎉 Celebrations:
-- Congratulations to the Sales team for meeting Q1 goals!
+🎉 Прослави:
+- Честитки до тимот за продажба за исполнување на целите за Q1!
 
-🔗 Resources:
-Visit the company intranet for more details: https://intranet.company.com
+🔗 Ресурси:
+Посетете го интранетот на компанијата за повеќе детали: https://intranet.company.com
 
-Have a great week!`
+Убава недела!`
             ],
             hasLinks: true,
             legitimateLinks: ['https://intranet.company.com'],
@@ -144,22 +144,22 @@ Have a great week!`
             category: 'vendor',
             from: { name: 'Microsoft 365', domain: 'microsoft.com' },
             subjects: [
-                'Your Monthly Service Summary',
-                'New Features in Microsoft 365'
+                'Вашето Месечно Резиме на Услугите',
+                'Нови Функции во Microsoft 365'
             ],
             bodyTemplates: [
-                `Hello,
+                `Здраво,
 
-Your Microsoft 365 subscription is active and running smoothly.
+Вашата претплата на Microsoft 365 е активна и работи непречено.
 
-This month's highlights:
-- 99.9% uptime
-- New collaboration features in Teams
-- Updated security features
+Најважни точки од овој месец:
+- 99.9% работно време
+- Нови функции за соработка во Teams
+- Ажурирани безбедносни функции
 
-Visit the Microsoft 365 admin center for more details: https://admin.microsoft.com
+Посетете го административниот центар на Microsoft 365 за повеќе детали: https://admin.microsoft.com
 
-Thank you for choosing Microsoft 365.`
+Ви благодариме што избравте Microsoft 365.`
             ],
             hasLinks: true,
             legitimateLinks: ['https://admin.microsoft.com'],
@@ -172,24 +172,24 @@ Thank you for choosing Microsoft 365.`
             id: 'phish_paypal_urgent',
             category: 'account_verification',
             targetBrand: 'PayPal',
-            difficulty: 1, // Easy - obvious typo
+            difficulty: 1, // Лесно - очигледна грешка
             techniques: ['domain_typosquatting', 'urgency_language', 'url_mismatch', 'generic_greeting'],
-            from: { name: 'PayPal Security', domain: 'paypa1.com' }, // 1 instead of l
+            from: { name: 'PayPal Безбедност', domain: 'paypa1.com' }, // 1 наместо l
             subjects: [
-                'URGENT: Verify Your Account NOW',
-                'Your Account Will Be Suspended',
-                'Immediate Action Required - Account Security'
+                'ИТНО: Верификувајте ја Вашата Сметка СЕГА',
+                'Вашата Сметка Ќе Биде Суспендирана',
+                'Потребна е Итна Акција - Безбедност на Сметката'
             ],
             bodyTemplates: [
-                `Dear valued customer,
+                `Почитуван ценет клиент,
 
-We detected unusual activity on your PayPal account. Your account will be suspended within 24 hours unless you verify your information immediately.
+Детектиравме необична активност на вашата PayPal сметка. Вашата сметка ќе биде суспендирана во рок од 24 часа освен ако не ги верификувате вашите информации веднаш.
 
-Click here to verify your account: {{malicious_link}}
+Кликнете тука за да ја верификувате вашата сметка: {{malicious_link}}
 
-Failure to verify will result in permanent account closure.
+Неуспехот да верификувате ќе резултира со трајно затворање на сметката.
 
-PayPal Security Team`
+PayPal Тим за Безбедност`
             ],
             maliciousLinks: [
                 { display: 'https://www.paypal.com/verify', actual: 'https://paypa1-secure.com/login' }
@@ -203,29 +203,29 @@ PayPal Security Team`
         {
             id: 'phish_bank_alert',
             category: 'security_alert',
-            targetBrand: 'Generic Bank',
+            targetBrand: 'Општа Банка',
             difficulty: 1,
             techniques: ['urgency_language', 'requests_credentials', 'suspicious_attachment'],
-            from: { name: 'Security Alert', domain: 'bank-security.net' },
+            from: { name: 'Безбедносен Аларм', domain: 'bank-security.net' },
             subjects: [
-                'Unusual Activity Detected',
-                'Security Alert: Login from New Device',
-                'FRAUD ALERT - Verify Transaction'
+                'Детектирана Необична Активност',
+                'Безбедносен Аларм: Најава од Нов Уред',
+                'АЛАРМ ЗА ИЗМАМА - Верификувајте Трансакција'
             ],
             bodyTemplates: [
-                `Dear Customer,
+                `Почитуван Клиент,
 
-We have detected a suspicious transaction on your account for $2,450.99.
+Детектиравме сомнителна трансакција на вашата сметка од €2,450.99.
 
-If this was not you, please download and complete the attached verification form immediately.
+Доколку ова не сте вие, ве молиме преземете го и пополнете го прикачениот формулар за верификација веднаш.
 
-Attach your ID and submit within 24 hours to prevent account suspension.
+Прикачете ја вашата лична карта и поднесете во рок од 24 часа за да спречите суспензија на сметката.
 
-Security Team`
+Тим за Безбедност`
             ],
             hasAttachments: true,
             attachments: [
-                { name: 'verification_form.pdf.exe', size: '2.4 MB', type: 'application/x-msdownload', suspicious: true }
+                { name: 'formular_verifikacija.pdf.exe', size: '2.4 MB', type: 'application/x-msdownload', suspicious: true }
             ],
             headers: {
                 spfResult: 'none',
@@ -237,29 +237,29 @@ Security Team`
             id: 'phish_amazon',
             category: 'order_confirmation',
             targetBrand: 'Amazon',
-            difficulty: 2, // Medium - subtle domain
+            difficulty: 2, // Средно - суптилен домен
             techniques: ['domain_typosquatting', 'url_mismatch', 'fake_invoice'],
-            from: { name: 'Amazon Order Confirmation', domain: 'amazon.corn' }, // corn instead of com
+            from: { name: 'Amazon Потврда на Нарачка', domain: 'amazon.corn' }, // corn наместо com
             subjects: [
-                'Your Order Confirmation #847592',
-                'Order Shipped - Tracking Information',
-                'Problem with Your Recent Order'
+                'Вашата Потврда на Нарачка #847592',
+                'Нарачката Испратена - Информации за Следење',
+                'Проблем со Вашата Последна Нарачка'
             ],
             bodyTemplates: [
-                `Hello,
+                `Здраво,
 
-Thank you for your order! Your purchase has been confirmed.
+Ви благодариме за вашата нарачка! Вашата купувина е потврдена.
 
-Order Details:
-- iPhone 15 Pro Max (x2) - $2,199.98
-- Shipping Address: Unknown Location
+Детали на Нарачката:
+- iPhone 15 Pro Max (x2) - €2,199.98
+- Адреса за Испорака: Непозната Локација
 
-If you did not place this order, please cancel it here: {{malicious_link}}
+Доколку не сте ја направиле оваа нарачка, ве молиме откажете ја тука: {{malicious_link}}
 
-Order Number: #847592
-Expected Delivery: 3-5 business days
+Број на Нарачка: #847592
+Очекувана Достава: 3-5 работни дена
 
-Amazon Customer Service`
+Amazon Услуга за Корисници`
             ],
             maliciousLinks: [
                 { display: 'https://www.amazon.com/cancel-order', actual: 'https://amazon-orders.corn/cancel' }
@@ -276,28 +276,28 @@ Amazon Customer Service`
             targetBrand: 'Microsoft',
             difficulty: 2,
             techniques: ['url_mismatch', 'urgency_language', 'requests_credentials'],
-            from: { name: 'Microsoft Account Team', domain: 'microsoft.com' },
+            from: { name: 'Microsoft Тим за Сметки', domain: 'microsoft.com' },
             subjects: [
-                'Password Reset Request',
-                'Your Account Password Expires Today',
-                'Verify Your Microsoft Account'
+                'Барање за Ресетирање на Лозинка',
+                'Вашата Лозинка Истекува Денес',
+                'Верификувајте ја Вашата Microsoft Сметка'
             ],
             bodyTemplates: [
-                `Dear Microsoft User,
+                `Почитуван Microsoft Корисник,
 
-Your password will expire in 2 hours. To continue using your account, please reset your password immediately.
+Вашата лозинка ќе истече за 2 часа. За да продолжите да ја користите вашата сметка, ве молиме ресетирајте ја вашата лозинка веднаш.
 
-Reset your password: {{malicious_link}}
+Ресетирајте ја вашата лозинка: {{malicious_link}}
 
-If you do not reset your password, your account will be locked and all data will be deleted.
+Доколку не ја ресетирате вашата лозинка, вашата сметка ќе биде заклучена и сите податоци ќе бидат избришани.
 
-Microsoft Account Team`
+Microsoft Тим за Сметки`
             ],
             maliciousLinks: [
                 { display: 'https://account.microsoft.com/reset', actual: 'https://rnicr0s0ft-account.com/reset' }
             ],
             headers: {
-                spfResult: 'pass', // Spoofed to look legitimate
+                spfResult: 'pass', // Лажиран да изгледа легитимен
                 dkimResult: 'none',
                 returnPath: 'no-reply@microsoft-account.services'
             }
@@ -306,64 +306,64 @@ Microsoft Account Team`
             id: 'phish_google',
             category: 'security_alert',
             targetBrand: 'Google',
-            difficulty: 3, // Hard - subtle indicators
+            difficulty: 3, // Тешко - суптилни индикатори
             techniques: ['url_mismatch', 'social_engineering'],
-            from: { name: 'Google Security', domain: 'google.com' },
+            from: { name: 'Google Безбедност', domain: 'google.com' },
             subjects: [
-                'Security Alert: New sign-in from Chrome',
-                'Review recent activity on your Google Account'
+                'Безбедносен Аларм: Нова најава од Chrome',
+                'Прегледајте ја неодамнешната активност на вашата Google Сметка'
             ],
             bodyTemplates: [
-                `Hi,
+                `Здраво,
 
-We noticed a new sign-in to your Google Account from a Chrome browser.
+Забележавме нова најава на вашата Google Сметка од Chrome прелистувач.
 
-Device: Chrome on Windows
-Location: New York, NY
-Time: January 18, 2026, 2:30 PM EST
+Уред: Chrome на Windows
+Локација: Њујорк, NY
+Време: 18 јануари 2026, 14:30 EST
 
-If this was you, you can ignore this email. If not, please review your account activity:
+Доколку ова сте вие, можете да ја игнорирате оваа порака. Доколку не, ве молиме прегледајте ја активноста на вашата сметка:
 
-Review Activity: {{malicious_link}}
+Прегледајте Активност: {{malicious_link}}
 
-Best regards,
-The Google Account team`
+Со почит,
+Google Тимот за Сметки`
             ],
             maliciousLinks: [
                 { display: 'https://myaccount.google.com/security', actual: 'https://myaccount-go0gle.com/security' }
             ],
             headers: {
                 spfResult: 'pass',
-                dkimResult: 'pass', // Sophisticated - passes some checks
+                dkimResult: 'pass', // Софистициран - минува некои проверки
                 returnPath: 'no-reply@accounts.google.com',
-                receivedFrom: '185.243.11.54' // Suspicious IP
+                receivedFrom: '185.243.11.54' // Сомнителна IP
             }
         },
         {
             id: 'phish_internal_ceo',
             category: 'ceo_fraud',
-            targetBrand: 'Internal',
+            targetBrand: 'Внатрешен',
             difficulty: 3,
             techniques: ['executive_impersonation', 'urgency_language', 'requests_action'],
-            from: { name: 'Robert Chen (CEO)', domain: 'company-mail.com' }, // Similar but wrong domain
+            from: { name: 'Роберт Ченов (CEO)', domain: 'company-mail.com' }, // Сличен но погрешен домен
             subjects: [
-                'URGENT: Wire Transfer Needed',
-                'Quick Favor - Time Sensitive',
-                'RE: Confidential Acquisition'
+                'ИТНО: Потребен е Банкарски Трансфер',
+                'Брза Услуга - Временски Сензитивно',
+                'RE: Доверлива Aквизиција'
             ],
             bodyTemplates: [
                 `{{name}},
 
-I'm in a meeting and need you to process an urgent wire transfer for a confidential acquisition we're finalizing.
+На состанок сум и ми треба да процесираш итен банкарски трансфер за доверлива аквизиција што ја финализираме.
 
-Amount: $45,000
-Account details will be sent separately.
+Износ: €45,000
+Детали за сметката ќе бидат испратени одделно.
 
-This is time-sensitive and confidential. Do not discuss with anyone.
+Ова е временски сензитивно и доверливо. Не дискутирајте со никого.
 
-Please confirm you can handle this ASAP.
+Ве молиме потврдете дека можете да се справите со ова ШТО ПОСКОРО.
 
-Robert Chen
+Роберт Чен
 CEO, Company Inc.`
             ],
             hasLinks: false,
@@ -380,32 +380,32 @@ CEO, Company Inc.`
             targetBrand: 'DHL',
             difficulty: 2,
             techniques: ['url_mismatch', 'suspicious_attachment', 'urgency_language'],
-            from: { name: 'DHL Delivery Service', domain: 'dhl-delivery.info' },
+            from: { name: 'DHL Услуга за Достава', domain: 'dhl-delivery.info' },
             subjects: [
-                'Package Delivery Failed - Action Required',
-                'Your Package is Waiting - Confirm Address',
-                'DHL Shipment #DHL8493021'
+                'Неуспешна Достава на Пакет - Потребна Акција',
+                'Вашиот Пакет Чека - Потврдете Адреса',
+                'DHL Пратка #DHL8493021'
             ],
             bodyTemplates: [
-                `Dear Customer,
+                `Почитуван Клиент,
 
-We attempted to deliver your package but no one was available to receive it.
+Се обидовме да го достаиме вашиот пакет но никој не беше достапен да го прими.
 
-Package tracking: #DHL8493021
-Delivery attempt: January 18, 2026
+Следење на пакет: #DHL8493021
+Обид за достава: 18 јануари 2026
 
-Please download the attached shipping label and reschedule delivery: {{malicious_link}}
+Ве молиме преземете ја прикачената транспортна етикета и закажете повторна достава: {{malicious_link}}
 
-Your package will be returned to sender if not claimed within 48 hours.
+Вашиот пакет ќе биде вратен до испраќачот доколку не биде побаран во рок од 48 часа.
 
-DHL Customer Service`
+DHL Услуга за Корисници`
             ],
             maliciousLinks: [
                 { display: 'https://www.dhl.com/tracking', actual: 'https://dhl-packagetrack.info/login' }
             ],
             hasAttachments: true,
             attachments: [
-                { name: 'DHL_Label.pdf.js', size: '1.2 MB', type: 'application/javascript', suspicious: true }
+                { name: 'DHL_Etiketa.pdf.js', size: '1.2 MB', type: 'application/javascript', suspicious: true }
             ],
             headers: {
                 spfResult: 'none',

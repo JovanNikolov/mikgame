@@ -169,7 +169,7 @@
 
         if (status === 'gameOver') {
             // Game over - too many strikes
-            UIController.showGameOver('Too many incorrect decisions! You accumulated 3 strikes.');
+            UIController.showGameOver('Премногу неточни одлуки! Направивте 3 грешки.');
             return;
         }
 
@@ -212,7 +212,7 @@
             }
         } else {
             // Failed the level
-            UIController.showGameOver(`You didn't meet the passing score for Level ${summary.level}. You needed ${LevelManager.getCurrentLevelConfig().passingScore} correct decisions.`);
+            UIController.showGameOver(`Не го достигнавте потребниот резултат за Ниво ${summary.level}. Беа ви потребни ${LevelManager.getCurrentLevelConfig().passingScore} точни одлуки.`);
         }
     }
 

@@ -27,7 +27,7 @@ const EmailGenerator = (function() {
         const bodyTemplate = randomChoice(template.bodyTemplates);
 
         // Replace template variables
-        const body = bodyTemplate.replace(/\{\{name\}\}/g, 'John');
+        const body = bodyTemplate.replace(/\{\{name\}\}/g, 'Јован');
 
         // Build email object
         const email = {
@@ -54,7 +54,7 @@ const EmailGenerator = (function() {
                 returnPath: `noreply@${template.from.domain}`
             },
             phishingIndicators: [],
-            explanation: 'This is a legitimate email from a trusted source. It has proper authentication and no suspicious indicators.'
+            explanation: 'Ова е легитимна е-порака од доверлив извор. Има соодветна автентикација и нема сомнителни индикатори.'
         };
 
         // Add links if template has them
@@ -164,21 +164,21 @@ const EmailGenerator = (function() {
     // Generate explanation for phishing email
     function generatePhishingExplanation(email, indicators) {
         if (indicators.length === 0) {
-            return 'This was a phishing attempt with sophisticated techniques.';
+            return 'Ова беше фишинг обид со софистицирани техники.';
         }
 
         const criticalIndicators = indicators.filter(i => i.severity === 'critical');
         const highIndicators = indicators.filter(i => i.severity === 'high');
 
-        let explanation = 'This was a phishing attempt. ';
+        let explanation = 'Ова беше фишинг обид. ';
 
         if (criticalIndicators.length > 0) {
-            explanation += `Critical red flags: ${criticalIndicators.map(i => i.description).join(', ')}. `;
+            explanation += `Критични знаци за опасност: ${criticalIndicators.map(i => i.description).join(', ')}. `;
         } else if (highIndicators.length > 0) {
-            explanation += `Major red flags: ${highIndicators.map(i => i.description).join(', ')}. `;
+            explanation += `Главни знаци за опасност: ${highIndicators.map(i => i.description).join(', ')}. `;
         }
 
-        explanation += `Always verify sender identity and be cautious of ${email.from.displayName} emails asking for urgent action.`;
+        explanation += `Секогаш верификувајте го идентитетот на испраќачот и бидете внимателни на е-пораки од ${email.from.displayName} што бараат итна акција.`;
 
         return explanation;
     }

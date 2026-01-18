@@ -20,7 +20,7 @@ const PhishingRules = (function() {
                     type: 'DOMAIN_TYPOSQUATTING',
                     element: 'from.domain',
                     severity: 'high',
-                    description: `Domain may be impersonating ${target}`
+                    description: `Доменот е возможно да го имитира ${target}`
                 });
             }
         }
@@ -31,7 +31,7 @@ const PhishingRules = (function() {
                 type: 'DOMAIN_WRONG_TLD',
                 element: 'from.domain',
                 severity: 'medium',
-                description: 'Suspicious top-level domain'
+                description: 'Сомнителен главен домен'
             });
         }
 
@@ -43,7 +43,7 @@ const PhishingRules = (function() {
                     type: 'DOMAIN_EXTRA_WORDS',
                     element: 'from.domain',
                     severity: 'high',
-                    description: `Domain contains suspicious word: ${word}`
+                    description: `Доменот содржи сомнителен збор: ${word}`
                 });
             }
         }
@@ -63,7 +63,7 @@ const PhishingRules = (function() {
                     type: 'URGENCY_LANGUAGE',
                     element: 'subject/body',
                     severity: 'medium',
-                    description: `Contains urgent language: "${keyword}"`
+                    description: `Содржи итен јазик: "${keyword}"`
                 });
                 break; // Only report once
             }
@@ -84,7 +84,7 @@ const PhishingRules = (function() {
                     type: 'GENERIC_GREETING',
                     element: 'body',
                     severity: 'low',
-                    description: `Uses generic greeting: "${pattern}"`
+                    description: `Користи општо поздравување: "${pattern}"`
                 });
                 break;
             }
@@ -105,7 +105,7 @@ const PhishingRules = (function() {
                     type: 'URL_MISMATCH',
                     element: 'links',
                     severity: 'critical',
-                    description: `Link shows "${link.displayText}" but goes to "${link.actualUrl}"`
+                    description: `Линкот покажува "${link.displayText}" но води кон "${link.actualUrl}"`
                 });
             }
         }
@@ -122,7 +122,7 @@ const PhishingRules = (function() {
                 type: 'SPF_FAILURE',
                 element: 'headers',
                 severity: 'high',
-                description: 'Email failed SPF authentication'
+                description: 'Е-поштата не ја помина SPF автентикацијата'
             });
         }
 
@@ -131,7 +131,7 @@ const PhishingRules = (function() {
                 type: 'DKIM_FAILURE',
                 element: 'headers',
                 severity: 'high',
-                description: 'Email failed DKIM authentication'
+                description: 'Е-поштата не ја помина DKIM автентикацијата'
             });
         }
 
@@ -140,7 +140,7 @@ const PhishingRules = (function() {
                 type: 'NO_AUTHENTICATION',
                 element: 'headers',
                 severity: 'medium',
-                description: 'Email has no authentication'
+                description: 'Е-поштата нема автентикација'
             });
         }
 
@@ -166,7 +166,7 @@ const PhishingRules = (function() {
                         type: 'SUSPICIOUS_ATTACHMENT',
                         element: 'attachments',
                         severity: 'high',
-                        description: `Dangerous file extension: ${ext}`
+                        description: `Опасна екстензија на фајлот: ${ext}`
                     });
                     break;
                 }
@@ -178,7 +178,7 @@ const PhishingRules = (function() {
                     type: 'SUSPICIOUS_ATTACHMENT',
                     element: 'attachments',
                     severity: 'high',
-                    description: `Double file extension detected: ${attachment.name}`
+                    description: `Дупла екстензија на фајлот: ${attachment.name}`
                 });
             }
         }
@@ -198,7 +198,7 @@ const PhishingRules = (function() {
                     type: 'REQUESTS_CREDENTIALS',
                     element: 'body',
                     severity: 'critical',
-                    description: `Requests sensitive information: "${keyword}"`
+                    description: `Побарува осетливи податоци: "${keyword}"`
                 });
                 break;
             }
@@ -219,7 +219,7 @@ const PhishingRules = (function() {
                     type: 'EXECUTIVE_IMPERSONATION',
                     element: 'from/body',
                     severity: 'critical',
-                    description: `Possible executive impersonation`
+                    description: `Возможно претставување како раководител`
                 });
                 break;
             }

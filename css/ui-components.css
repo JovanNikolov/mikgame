@@ -1,6 +1,3 @@
-/* UI Components - Buttons, Modals, Overlays */
-
-/* Buttons */
 button {
     font-family: var(--font-sans);
     cursor: pointer;
@@ -37,7 +34,6 @@ button:disabled {
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Decision buttons */
 .btn-decision {
     display: flex;
     flex-direction: column;
@@ -89,7 +85,6 @@ button:disabled {
     opacity: 0.8;
 }
 
-/* Overlay */
 .overlay {
     position: fixed;
     top: 0;
@@ -103,7 +98,6 @@ button:disabled {
     z-index: 1000;
 }
 
-/* Feedback modal */
 .feedback-modal {
     background-color: var(--color-paper);
     border: 4px solid var(--color-border-dark);
@@ -190,7 +184,6 @@ button:disabled {
     background-color: #f9f9f9;
 }
 
-/* Start screen */
 .start-content,
 .level-complete-content,
 .game-over-content,
@@ -230,7 +223,6 @@ button:disabled {
     line-height: 1.8;
 }
 
-/* Stats display */
 .level-stats,
 .final-stats {
     background-color: #ffffff;

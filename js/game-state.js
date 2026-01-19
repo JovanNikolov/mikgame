@@ -1,10 +1,6 @@
-// Game State Management
-// Centralized state object using IIFE pattern
-
 window.GameState = (function() {
     'use strict';
 
-    // Private state
     let state = {
         currentLevel: 1,
         score: 0,
@@ -14,16 +10,14 @@ window.GameState = (function() {
         emailsRequiredPerLevel: 10,
         correctDecisions: 0,
         incorrectDecisions: 0,
-        gameStatus: 'menu', // 'menu', 'playing', 'levelComplete', 'gameOver', 'victory'
+        gameStatus: 'menu',
         currentEmail: null,
         levelStartTime: null,
         levelScoreStart: 0
     };
 
-    // Event listeners for state changes
     const listeners = [];
 
-    // Private functions
     function notifyListeners() {
         listeners.forEach(listener => listener(state));
     }
@@ -45,7 +39,6 @@ window.GameState = (function() {
             const saved = localStorage.getItem('phishing-inspector-save');
             if (saved) {
                 const data = JSON.parse(saved);
-                // Only load if save is less than 24 hours old
                 if (Date.now() - data.timestamp < 86400000) {
                     return data;
                 }
@@ -56,14 +49,11 @@ window.GameState = (function() {
         return null;
     }
 
-    // Public API
     return {
-        // Get current state (read-only copy)
         getState() {
             return { ...state };
         },
 
-        // Get specific state values
         getCurrentLevel() {
             return state.currentLevel;
         },
@@ -114,7 +104,6 @@ window.GameState = (function() {
             return state.score - state.levelScoreStart;
         },
 
-        // State updates
         setCurrentEmail(email) {
             state.currentEmail = email;
             notifyListeners();
@@ -162,7 +151,6 @@ window.GameState = (function() {
             notifyListeners();
         },
 
-        // Level management
         startLevel(levelNumber) {
             state.currentLevel = levelNumber;
             state.emailsInspected = 0;
@@ -178,7 +166,6 @@ window.GameState = (function() {
             this.startLevel(state.currentLevel + 1);
         },
 
-        // Game lifecycle
         startNewGame() {
             state = {
                 currentLevel: 1,
@@ -201,7 +188,6 @@ window.GameState = (function() {
             this.startNewGame();
         },
 
-        // Save/Load
         saveGame() {
             saveToLocalStorage();
         },
@@ -225,7 +211,6 @@ window.GameState = (function() {
             }
         },
 
-        // Event listeners
         addListener(callback) {
             listeners.push(callback);
         },
@@ -237,7 +222,6 @@ window.GameState = (function() {
             }
         },
 
-        // Debug helper
         debugState() {
             console.table(state);
         }

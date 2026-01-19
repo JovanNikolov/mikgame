@@ -1,5 +1,3 @@
-// Level Manager - Handles level progression and email queue
-
 window.LevelManager = (function() {
     'use strict';
 
@@ -7,7 +5,6 @@ window.LevelManager = (function() {
     let emailQueue = [];
     let currentEmailIndex = 0;
 
-    // Initialize level
     function initializeLevel(levelNumber) {
         currentLevelConfig = getLevelConfig(levelNumber);
 
@@ -16,18 +13,15 @@ window.LevelManager = (function() {
             return false;
         }
 
-        // Generate all emails for this level
         emailQueue = EmailGenerator.generateEmailsForLevel(currentLevelConfig);
         currentEmailIndex = 0;
 
-        // Update game state
         GameState.setEmailsRequired(currentLevelConfig.emailCount);
         GameState.startLevel(levelNumber);
 
         return true;
     }
 
-    // Get next email in queue
     function getNextEmail() {
         if (currentEmailIndex >= emailQueue.length) {
             return null;
@@ -39,29 +33,24 @@ window.LevelManager = (function() {
         return email;
     }
 
-    // Check if there are more emails
     function hasMoreEmails() {
         return currentEmailIndex < emailQueue.length;
     }
 
-    // Get current level config
     function getCurrentLevelConfig() {
         return currentLevelConfig;
     }
 
-    // Check if level is complete
     function isLevelComplete() {
         return GameState.getEmailsInspected() >= currentLevelConfig.emailCount;
     }
 
-    // Check if player passed the level
     function didPassLevel() {
         const accuracy = GameState.getLevelAccuracy();
         const requiredAccuracy = (currentLevelConfig.passingScore / currentLevelConfig.emailCount) * 100;
         return accuracy >= requiredAccuracy && GameState.getStrikes() < GameState.getMaxStrikes();
     }
 
-    // Get level summary
     function getLevelSummary() {
         return {
             level: currentLevelConfig.levelNumber,
@@ -76,7 +65,6 @@ window.LevelManager = (function() {
         };
     }
 
-    // Move to next level
     function advanceToNextLevel() {
         const nextLevelNum = currentLevelConfig.levelNumber + 1;
 
@@ -88,12 +76,10 @@ window.LevelManager = (function() {
         return initializeLevel(nextLevelNum);
     }
 
-    // Retry current level
     function retryLevel() {
         return initializeLevel(currentLevelConfig.levelNumber);
     }
 
-    // Get progress for current level
     function getLevelProgress() {
         return {
             current: GameState.getEmailsInspected(),
@@ -102,7 +88,6 @@ window.LevelManager = (function() {
         };
     }
 
-    // Public API
     return {
         initializeLevel,
         getNextEmail,

@@ -1,16 +1,12 @@
-// Phishing Detection Rules and Logic
-
 window.PhishingRules = (function() {
     'use strict';
 
-    // Check if domain contains typosquatting
     function checkDomainTyposquatting(domain) {
         const indicators = [];
         const commonTargets = PhishingPatterns.DOMAIN_TYPOSQUATTING.commonTargets;
 
         const lowerDomain = domain.toLowerCase();
 
-        // Check for character substitutions
         for (const target of commonTargets) {
             if (lowerDomain.includes(target.replace('l', '1')) ||
                 lowerDomain.includes(target.replace('l', 'i')) ||
@@ -25,7 +21,6 @@ window.PhishingRules = (function() {
             }
         }
 
-        // Check for wrong TLD
         if (lowerDomain.endsWith('.corn') || lowerDomain.endsWith('.cm')) {
             indicators.push({
                 type: 'DOMAIN_WRONG_TLD',
@@ -35,7 +30,6 @@ window.PhishingRules = (function() {
             });
         }
 
-        // Check for extra words
         const suspiciousWords = PhishingPatterns.DOMAIN_EXTRA_WORDS.patterns;
         for (const word of suspiciousWords) {
             if (lowerDomain.includes(word)) {
@@ -51,7 +45,6 @@ window.PhishingRules = (function() {
         return indicators;
     }
 
-    // Check for urgent/threatening language
     function checkUrgencyLanguage(subject, body) {
         const indicators = [];
         const keywords = PhishingPatterns.URGENCY_LANGUAGE.keywords;
@@ -65,14 +58,13 @@ window.PhishingRules = (function() {
                     severity: 'medium',
                     description: `Содржи итен јазик: "${keyword}"`
                 });
-                break; // Only report once
+                break;
             }
         }
 
         return indicators;
     }
 
-    // Check for generic greetings
     function checkGenericGreeting(body) {
         const indicators = [];
         const patterns = PhishingPatterns.GENERIC_GREETING.patterns;
@@ -93,7 +85,6 @@ window.PhishingRules = (function() {
         return indicators;
     }
 
-    // Check for URL mismatches
     function checkUrlMismatches(links) {
         const indicators = [];
 
@@ -113,7 +104,6 @@ window.PhishingRules = (function() {
         return indicators;
     }
 
-    // Check SPF/DKIM authentication
     function checkAuthentication(headers) {
         const indicators = [];
 
@@ -147,7 +137,6 @@ window.PhishingRules = (function() {
         return indicators;
     }
 
-    // Check for suspicious attachments
     function checkSuspiciousAttachments(attachments) {
         const indicators = [];
 
@@ -159,7 +148,6 @@ window.PhishingRules = (function() {
         for (const attachment of attachments) {
             const name = attachment.name.toLowerCase();
 
-            // Check for dangerous extensions
             for (const ext of dangerousExtensions) {
                 if (name.endsWith(ext)) {
                     indicators.push({
@@ -172,7 +160,6 @@ window.PhishingRules = (function() {
                 }
             }
 
-            // Check for double extensions
             if (doubleExtPattern.test(name)) {
                 indicators.push({
                     type: 'SUSPICIOUS_ATTACHMENT',
@@ -186,7 +173,6 @@ window.PhishingRules = (function() {
         return indicators;
     }
 
-    // Check if email requests credentials
     function checkRequestsCredentials(body) {
         const indicators = [];
         const keywords = PhishingPatterns.REQUESTS_CREDENTIALS.keywords;
@@ -207,7 +193,6 @@ window.PhishingRules = (function() {
         return indicators;
     }
 
-    // Check for executive impersonation
     function checkExecutiveImpersonation(from, body) {
         const indicators = [];
         const keywords = PhishingPatterns.EXECUTIVE_IMPERSONATION.keywords;
@@ -228,34 +213,25 @@ window.PhishingRules = (function() {
         return indicators;
     }
 
-    // Main analysis function
     function analyzeEmail(email) {
         let indicators = [];
 
-        // Domain checks
         indicators = indicators.concat(checkDomainTyposquatting(email.from.address.split('@')[1]));
 
-        // Content checks
         indicators = indicators.concat(checkUrgencyLanguage(email.subject, email.body));
         indicators = indicators.concat(checkGenericGreeting(email.body));
 
-        // Technical checks
         indicators = indicators.concat(checkUrlMismatches(email.links));
         indicators = indicators.concat(checkAuthentication(email.headers));
         indicators = indicators.concat(checkSuspiciousAttachments(email.attachments));
 
-        // Behavioral checks
         indicators = indicators.concat(checkRequestsCredentials(email.body));
         indicators = indicators.concat(checkExecutiveImpersonation(email.from, email.body));
 
         return indicators;
     }
 
-    // Evaluate player decision
     function evaluateDecision(email, decision) {
-        // decision: 'approve' or 'reject'
-        // approve = legitimate, reject = phishing
-
         const isCorrect = (decision === 'approve' && !email.isPhishing) ||
                           (decision === 'reject' && email.isPhishing);
 
@@ -269,7 +245,6 @@ window.PhishingRules = (function() {
         };
     }
 
-    // Calculate risk score (0-100, higher = more suspicious)
     function calculateRiskScore(indicators) {
         const severityPoints = {
             'critical': 30,
@@ -283,10 +258,9 @@ window.PhishingRules = (function() {
             score += severityPoints[indicator.severity] || 0;
         }
 
-        return Math.min(score, 100); // Cap at 100
+        return Math.min(score, 100);
     }
 
-    // Public API
     return {
         analyzeEmail,
         evaluateDecision,

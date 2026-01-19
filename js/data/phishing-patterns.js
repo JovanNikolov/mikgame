@@ -1,7 +1,4 @@
-// Phishing Patterns and Detection Rules
-
 window.PhishingPatterns = {
-    // Domain-based patterns
     DOMAIN_TYPOSQUATTING: {
         name: 'Domain Typosquatting',
         description: 'Domain uses character substitution (e.g., 1 for l, 0 for o)',
@@ -31,7 +28,6 @@ window.PhishingPatterns = {
         patterns: ['-security', '-verify', '-account', '-support', '-service', '-update']
     },
 
-    // Content-based patterns
     URGENCY_LANGUAGE: {
         name: 'Urgent/Threatening Language',
         description: 'Uses urgent or threatening language to pressure action',
@@ -57,7 +53,6 @@ window.PhishingPatterns = {
         examples: ['recieve', 'your account have been', 'we has detected']
     },
 
-    // Technical indicators
     URL_MISMATCH: {
         name: 'URL Mismatch',
         description: 'Display text shows different URL than actual link destination',
@@ -87,7 +82,6 @@ window.PhishingPatterns = {
         doubleExtensionPattern: /\.(pdf|doc|jpg|png|txt)\.(exe|scr|bat|js|vbs)/i
     },
 
-    // Behavioral patterns
     REQUESTS_CREDENTIALS: {
         name: 'Requests Personal Information',
         description: 'Asks for password, SSN, credit card, or other sensitive data',
@@ -118,7 +112,6 @@ window.PhishingPatterns = {
         keywords: ['ceo', 'cfo', 'president', 'executive', 'confidential']
     },
 
-    // Additional indicators
     MISMATCHED_REPLY_TO: {
         name: 'Mismatched Reply-To Address',
         description: 'Reply-to address differs from sender address',
@@ -138,12 +131,10 @@ window.PhishingPatterns = {
     }
 };
 
-// Helper function to get pattern by key
 window.getPhishingPattern = (key) => {
     return window.PhishingPatterns[key] || null;
 };
 
-// Get all patterns of a specific severity
 window.getPatternsBySeverity = (severity) => {
     return Object.entries(window.PhishingPatterns)
         .filter(([key, pattern]) => pattern.severity === severity)

@@ -1,5 +1,3 @@
-// Шаблони за Е-пошта - Легитимни и Фишинг
-
 window.EmailTemplates = {
     legitimate: [
         {
@@ -172,9 +170,9 @@ IT Поддршка`
             id: 'phish_paypal_urgent',
             category: 'account_verification',
             targetBrand: 'PayPal',
-            difficulty: 1, // Лесно - очигледна грешка
+            difficulty: 1,
             techniques: ['domain_typosquatting', 'urgency_language', 'url_mismatch', 'generic_greeting'],
-            from: { name: 'PayPal Безбедност', domain: 'paypa1.com' }, // 1 наместо l
+            from: { name: 'PayPal Безбедност', domain: 'paypa1.com' },
             subjects: [
                 'ИТНО: Верификувајте ја Вашата Сметка СЕГА',
                 'Вашата Сметка Ќе Биде Суспендирана',
@@ -237,9 +235,9 @@ PayPal Тим за Безбедност`
             id: 'phish_amazon',
             category: 'order_confirmation',
             targetBrand: 'Amazon',
-            difficulty: 2, // Средно - суптилен домен
+            difficulty: 2,
             techniques: ['domain_typosquatting', 'url_mismatch', 'fake_invoice'],
-            from: { name: 'Amazon Потврда на Нарачка', domain: 'amazon.corn' }, // corn наместо com
+            from: { name: 'Amazon Потврда на Нарачка', domain: 'amazon.corn' },
             subjects: [
                 'Вашата Потврда на Нарачка #847592',
                 'Нарачката Испратена - Информации за Следење',
@@ -297,7 +295,7 @@ Microsoft Тим за Сметки`
                 { display: 'https://account.microsoft.com/reset', actual: 'https://rnicr0s0ft-account.com/reset' }
             ],
             headers: {
-                spfResult: 'pass', // Лажиран да изгледа легитимен
+                spfResult: 'pass',
                 dkimResult: 'none',
                 returnPath: 'no-reply@microsoft-account.services'
             }
@@ -306,7 +304,7 @@ Microsoft Тим за Сметки`
             id: 'phish_google',
             category: 'security_alert',
             targetBrand: 'Google',
-            difficulty: 3, // Тешко - суптилни индикатори
+            difficulty: 3,
             techniques: ['url_mismatch', 'social_engineering'],
             from: { name: 'Google Безбедност', domain: 'google.com' },
             subjects: [
@@ -334,9 +332,9 @@ Google Тимот за Сметки`
             ],
             headers: {
                 spfResult: 'pass',
-                dkimResult: 'pass', // Софистициран - минува некои проверки
+                dkimResult: 'pass',
                 returnPath: 'no-reply@accounts.google.com',
-                receivedFrom: '185.243.11.54' // Сомнителна IP
+                receivedFrom: '185.243.11.54'
             }
         },
         {
@@ -345,7 +343,7 @@ Google Тимот за Сметки`
             targetBrand: 'Внатрешен',
             difficulty: 3,
             techniques: ['executive_impersonation', 'urgency_language', 'requests_action'],
-            from: { name: 'Роберт Ченов (CEO)', domain: 'company-mail.com' }, // Сличен но погрешен домен
+            from: { name: 'Роберт Ченов (CEO)', domain: 'company-mail.com' },
             subjects: [
                 'ИТНО: Потребен е Банкарски Трансфер',
                 'Брза Услуга - Временски Сензитивно',

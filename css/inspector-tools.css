@@ -1,5 +1,3 @@
-/* Inspector tools panel styles */
-
 .inspector-tools {
     display: flex;
     flex-direction: column;
@@ -27,7 +25,6 @@
     padding: var(--spacing-md);
 }
 
-/* Header analysis */
 .header-item {
     display: flex;
     justify-content: space-between;
@@ -64,7 +61,6 @@
     color: var(--color-warning);
 }
 
-/* Link inspector */
 #link-inspector-content {
     min-height: 80px;
 }
@@ -109,7 +105,6 @@
     color: var(--color-danger);
 }
 
-/* Security checklist */
 .security-checklist {
     list-style: none;
     padding: 0;

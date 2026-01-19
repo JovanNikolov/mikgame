@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/ui-components.css">
 </head>
 <body>
-    <!-- Start Screen -->
     <div id="start-screen" class="screen">
         <div class="start-content">
             <h1>Инспектор за Фишинг</h1>
@@ -25,9 +24,7 @@
         </div>
     </div>
 
-    <!-- Game Screen -->
     <div id="game-screen" class="screen hidden">
-        <!-- Header with game stats -->
         <header class="game-header">
             <div class="stat-group">
                 <span class="stat-label">Ниво:</span>
@@ -52,9 +49,7 @@
             </div>
         </header>
 
-        <!-- Main game area -->
         <main class="game-container">
-            <!-- Left panel: Email Viewer -->
             <section class="email-panel">
                 <div class="email-viewer">
                     <div class="email-header-section">
@@ -94,7 +89,6 @@
                 </div>
             </section>
 
-            <!-- Right panel: Inspection Tools -->
             <section class="inspector-panel">
                 <div class="inspector-tools">
                     <div class="tool-section">
@@ -143,7 +137,6 @@
             </section>
         </main>
 
-        <!-- Decision buttons -->
         <footer class="decision-panel">
             <button id="btn-approve" class="btn-decision btn-approve" disabled>
                 <span class="btn-icon">✓</span>
@@ -158,7 +151,6 @@
         </footer>
     </div>
 
-    <!-- Feedback Overlay -->
     <div id="feedback-overlay" class="overlay hidden">
         <div class="feedback-modal">
             <div id="feedback-result" class="feedback-result"></div>
@@ -168,7 +160,6 @@
         </div>
     </div>
 
-    <!-- Level Complete Screen -->
     <div id="level-complete-screen" class="screen hidden">
         <div class="level-complete-content">
             <h2>Нивото е Завршено!</h2>
@@ -190,7 +181,6 @@
         </div>
     </div>
 
-    <!-- Game Over Screen -->
     <div id="game-over-screen" class="screen hidden">
         <div class="game-over-content">
             <h2>Играта Заврши</h2>
@@ -209,7 +199,6 @@
         </div>
     </div>
 
-    <!-- Victory Screen -->
     <div id="victory-screen" class="screen hidden">
         <div class="victory-content">
             <h2>Победа!</h2>
@@ -228,7 +217,6 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script type="module" src="js/game-state.js"></script>
     <script type="module" src="js/data/email-templates.js"></script>
     <script type="module" src="js/data/phishing-patterns.js"></script>

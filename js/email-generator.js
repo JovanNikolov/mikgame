@@ -1,16 +1,12 @@
-// Email Generator - Creates emails from templates
-
 window.EmailGenerator = (function() {
     'use strict';
 
     let emailIdCounter = 0;
 
-    // Helper to get random element from array
     function randomChoice(array) {
         return array[Math.floor(Math.random() * array.length)];
     }
 
-    // Helper to shuffle array
     function shuffleArray(array) {
         const shuffled = [...array];
         for (let i = shuffled.length - 1; i > 0; i--) {
@@ -20,16 +16,13 @@ window.EmailGenerator = (function() {
         return shuffled;
     }
 
-    // Generate legitimate email
     function generateLegitimateEmail(levelConfig) {
         const template = randomChoice(EmailTemplates.legitimate);
         const subject = randomChoice(template.subjects);
         const bodyTemplate = randomChoice(template.bodyTemplates);
 
-        // Replace template variables
         const body = bodyTemplate.replace(/\{\{name\}\}/g, 'Јован');
 
-        // Build email object
         const email = {
             id: `email_${++emailIdCounter}`,
             isPhishing: false,
@@ -57,7 +50,6 @@ window.EmailGenerator = (function() {
             explanation: 'Ова е легитимна е-порака од доверлив извор. Има соодветна автентикација и нема сомнителни индикатори.'
         };
 
-        // Add links if template has them
         if (template.hasLinks && template.legitimateLinks) {
             email.links = template.legitimateLinks.map(url => ({
                 displayText: url,
@@ -66,7 +58,6 @@ window.EmailGenerator = (function() {
             }));
         }
 
-        // Add attachments if template has them
         if (template.hasAttachments && template.attachments) {
             email.attachments = template.attachments.map(att => ({
                 name: att.name,
@@ -79,9 +70,7 @@ window.EmailGenerator = (function() {
         return email;
     }
 
-    // Generate phishing email
     function generatePhishingEmail(levelConfig) {
-        // Filter templates by difficulty and allowed techniques
         const availableTemplates = EmailTemplates.phishing.filter(template => {
             return template.difficulty <= levelConfig.difficulty;
         });
@@ -95,10 +84,8 @@ window.EmailGenerator = (function() {
         const subject = randomChoice(template.subjects);
         const bodyTemplate = randomChoice(template.bodyTemplates);
 
-        // Replace template variables
         let body = bodyTemplate.replace(/\{\{name\}\}/g, 'you');
 
-        // Build email object
         const email = {
             id: `email_${++emailIdCounter}`,
             isPhishing: true,
@@ -126,7 +113,6 @@ window.EmailGenerator = (function() {
             explanation: ''
         };
 
-        // Add malicious links
         if (template.maliciousLinks) {
             email.links = template.maliciousLinks.map(link => ({
                 displayText: link.display,
@@ -134,14 +120,12 @@ window.EmailGenerator = (function() {
                 isMatch: link.display === link.actual
             }));
 
-            // Replace {{malicious_link}} in body
             if (email.links.length > 0) {
                 body = body.replace(/\{\{malicious_link\}\}/g, email.links[0].displayText);
                 email.body = body;
             }
         }
 
-        // Add attachments
         if (template.hasAttachments && template.attachments) {
             email.attachments = template.attachments.map(att => ({
                 name: att.name,
@@ -151,17 +135,14 @@ window.EmailGenerator = (function() {
             }));
         }
 
-        // Analyze email to get phishing indicators
         const indicators = PhishingRules.analyzeEmail(email);
         email.phishingIndicators = indicators;
 
-        // Generate explanation
         email.explanation = generatePhishingExplanation(email, indicators);
 
         return email;
     }
 
-    // Generate explanation for phishing email
     function generatePhishingExplanation(email, indicators) {
         if (indicators.length === 0) {
             return 'Ова беше фишинг обид со софистицирани техники.';
@@ -183,29 +164,24 @@ window.EmailGenerator = (function() {
         return explanation;
     }
 
-    // Generate a batch of emails for a level
     function generateEmailsForLevel(levelConfig) {
         const emails = [];
         const emailCount = levelConfig.emailCount;
         const phishingCount = Math.round(emailCount * levelConfig.phishingRatio);
         const legitimateCount = emailCount - phishingCount;
 
-        // Generate phishing emails
         for (let i = 0; i < phishingCount; i++) {
             const email = generatePhishingEmail(levelConfig);
             if (email) emails.push(email);
         }
 
-        // Generate legitimate emails
         for (let i = 0; i < legitimateCount; i++) {
             emails.push(generateLegitimateEmail(levelConfig));
         }
 
-        // Shuffle emails so phishing and legitimate are mixed
         return shuffleArray(emails);
     }
 
-    // Generate single email (for testing or one-at-a-time gameplay)
     function generateSingleEmail(levelConfig, forcePhishing = null) {
         const shouldBePhishing = forcePhishing !== null
             ? forcePhishing
@@ -216,7 +192,6 @@ window.EmailGenerator = (function() {
             : generateLegitimateEmail(levelConfig);
     }
 
-    // Public API
     return {
         generateEmailsForLevel,
         generateSingleEmail,

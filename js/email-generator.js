@@ -16,6 +16,20 @@ window.EmailGenerator = (function() {
         return shuffled;
     }
 
+    function cyrillicToLatin(text) {
+        const map = {
+            'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'ѓ': 'gj', 'е': 'e', 'ж': 'z',
+            'з': 'z', 'ѕ': 'dz', 'и': 'i', 'ј': 'j', 'к': 'k', 'л': 'l', 'љ': 'lj', 'м': 'm',
+            'н': 'n', 'њ': 'nj', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'ќ': 'kj',
+            'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'c', 'џ': 'dz', 'ш': 's',
+            'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Ѓ': 'Gj', 'Е': 'E', 'Ж': 'Z',
+            'З': 'Z', 'Ѕ': 'Dz', 'И': 'I', 'Ј': 'J', 'К': 'K', 'Л': 'L', 'Љ': 'Lj', 'М': 'M',
+            'Н': 'N', 'Њ': 'Nj', 'О': 'O', 'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T', 'Ќ': 'Kj',
+            'У': 'U', 'Ф': 'F', 'Х': 'H', 'Ц': 'C', 'Ч': 'C', 'Џ': 'Dz', 'Ш': 'S'
+        };
+        return text.split('').map(char => map[char] || char).join('');
+    }
+
     function generateLegitimateEmail(levelConfig) {
         const template = randomChoice(EmailTemplates.legitimate);
         const subject = randomChoice(template.subjects);
@@ -29,7 +43,7 @@ window.EmailGenerator = (function() {
             difficulty: levelConfig.difficulty,
             from: {
                 displayName: template.from.name,
-                address: `${template.from.name.toLowerCase().replace(/\s/g, '.')}@${template.from.domain}`
+                address: `${cyrillicToLatin(template.from.name).toLowerCase().replace(/\s/g, '.')}@${template.from.domain}`
             },
             to: {
                 displayName: 'You',
@@ -92,7 +106,7 @@ window.EmailGenerator = (function() {
             difficulty: template.difficulty,
             from: {
                 displayName: template.from.name,
-                address: `${template.from.name.toLowerCase().replace(/\s/g, '.')}@${template.from.domain}`
+                address: `${cyrillicToLatin(template.from.name).toLowerCase().replace(/\s/g, '.')}@${template.from.domain}`
             },
             to: {
                 displayName: 'You',
